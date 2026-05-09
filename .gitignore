@@ -1,0 +1,36 @@
+# Dependencias
+node_modules/
+
+# Build
+dist/
+
+# Variables de entorno (¡NUNCA commitear el .env real!)
+.env
+.env.local
+.env.*.local
+
+# Cobertura de tests
+coverage/
+
+# Reportes generados
+zap-report.html
+zap-report.md
+zap-report.json
+npm-audit-report.json
+
+# Evidencias (capturas de pantalla, logs)
+evidencias/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*

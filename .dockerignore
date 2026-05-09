@@ -1,0 +1,17 @@
+node_modules
+dist
+coverage
+.env
+.env.local
+.git
+.gitignore
+*.md
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+test
+evidencias
+zap-report*
+npm-audit-report.json
