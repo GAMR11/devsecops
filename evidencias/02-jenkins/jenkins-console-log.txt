@@ -1,0 +1,747 @@
+Lanzada por el usuario Alvaro Salazar
+
+[Develocity] - [ERROR] - Could not extract hostname from Develocity server URL
+Obtained Jenkinsfile from git https://github.com/GAMR11/devsecops
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins 
+ in C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-token
+ > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/GAMR11/devsecops # timeout=10
+Fetching upstream changes from https://github.com/GAMR11/devsecops
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.52.0.windows.1'
+using GIT_ASKPASS to set credentials 
+ > git.exe fetch --tags --force --progress -- https://github.com/GAMR11/devsecops +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
+Checking out Revision f0311b8b6c0a2870bcc978220b155a1c26108d61 (refs/remotes/origin/master)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f f0311b8b6c0a2870bcc978220b155a1c26108d61 # timeout=10
+Commit message: "feat: add OWASP ZAP DAST stage to Jenkins pipeline"
+ > git.exe rev-list --no-walk 106ca96e4193fc604a788a15b7c1f3595e11e0f7 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] timeout
+Timeout set to expire in 30 Min
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+>>> [1/7] Clonando repositorio...
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-token
+ > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/GAMR11/devsecops # timeout=10
+Fetching upstream changes from https://github.com/GAMR11/devsecops
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.52.0.windows.1'
+using GIT_ASKPASS to set credentials 
+ > git.exe fetch --tags --force --progress -- https://github.com/GAMR11/devsecops +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
+Checking out Revision f0311b8b6c0a2870bcc978220b155a1c26108d61 (refs/remotes/origin/master)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f f0311b8b6c0a2870bcc978220b155a1c26108d61 # timeout=10
+Commit message: "feat: add OWASP ZAP DAST stage to Jenkins pipeline"
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+>>> [2/7] Instalando dependencias...
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs>npm ci 
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+npm warn deprecated supertest@6.3.4: Please upgrade to supertest v7.1.3+, see release notes at https://github.com/forwardemail/supertest/releases/tag/v7.1.3 - maintenance is supported by Forward Email @ https://forwardemail.net
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+npm warn deprecated superagent@8.1.2: Please upgrade to superagent v10.2.2+, see release notes at https://github.com/forwardemail/superagent/releases/tag/v10.2.2 - maintenance is supported by Forward Email @ https://forwardemail.net
+npm warn deprecated glob@10.4.5: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+
+
+added 754 packages, and audited 755 packages in 18s
+
+132 packages are looking for funding
+  run `npm fund` for details
+
+30 vulnerabilities (4 low, 14 moderate, 12 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Dependency Audit)
+
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+>>> [3/7] Auditando dependencias (npm audit)...
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs>npm audit --json   1>npm-audit-report.json  || exit 0 
+
+[Pipeline] bat
+
+
+C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs>npm audit --audit-level=high   || exit 0 
+
+# npm audit report
+
+@nestjs/core  <=11.1.17
+Severity: moderate
+Depends on vulnerable versions of @nestjs/platform-express
+@nestjs/core Improperly Neutralizes Special Elements in Output Used by a Downstream Component ('Injection') - https://github.com/advisories/GHSA-36xv-jgw5-4q75
+fix available via `npm audit fix --force`
+Will install @nestjs/core@11.1.19, which is a breaking change
+node_modules/@nestjs/core
+  @nestjs/mongoose  5.1.0 - 10.1.0
+  Depends on vulnerable versions of @nestjs/core
+  node_modules/@nestjs/mongoose
+  @nestjs/platform-express  <=11.1.14 || >=12.0.0-alpha.0
+  Depends on vulnerable versions of @nestjs/core
+  Depends on vulnerable versions of multer
+  node_modules/@nestjs/platform-express
+    @nestjs/testing  <=11.0.0-next.4
+    Depends on vulnerable versions of @nestjs/core
+    Depends on vulnerable versions of @nestjs/platform-express
+    node_modules/@nestjs/testing
+  @nestjs/swagger  <=11.2.5
+  Depends on vulnerable versions of @nestjs/core
+  Depends on vulnerable versions of js-yaml
+  Depends on vulnerable versions of lodash
+  node_modules/@nestjs/swagger
+  @nestjs/throttler  <=6.3.0
+  Depends on vulnerable versions of @nestjs/core
+  node_modules/@nestjs/throttler
+
+ajv  7.0.0-alpha.0 - 8.17.1
+Severity: moderate
+ajv has ReDoS when using `$data` option - https://github.com/advisories/GHSA-2g4f-4pwh-qvx6
+fix available via `npm audit fix --force`
+Will install @nestjs/schematics@11.1.0, which is a breaking change
+node_modules/ajv
+  @angular-devkit/core  12.0.0-next.0 - 19.2.22 || 20.0.0-next.0 - 20.3.21 || 21.0.0-next.0 - 21.2.4 || 22.0.0-next.0 - 22.0.0-next.3
+  Depends on vulnerable versions of ajv
+  Depends on vulnerable versions of picomatch
+  node_modules/@angular-devkit/core
+    @angular-devkit/schematics  12.0.0-next.0 - 19.2.21 || 20.0.0-next.0 - 20.3.17 || 21.0.0-next.0 - 21.1.4 || 21.2.0-next.0 - 21.2.0-rc.2
+    Depends on vulnerable versions of @angular-devkit/core
+    node_modules/@angular-devkit/schematics
+    @angular-devkit/schematics-cli  0.12.0-beta.0 - 19.2.21 || 20.0.0-next.0 - 20.3.17 || 21.0.0-next.0 - 21.1.4 || 21.2.0-next.0 - 21.2.0-rc.2
+    Depends on vulnerable versions of @angular-devkit/core
+    Depends on vulnerable versions of @angular-devkit/schematics
+    Depends on vulnerable versions of inquirer
+    node_modules/@angular-devkit/schematics-cli
+    @nestjs/cli  2.0.0-rc.1 - 11.0.16
+    Depends on vulnerable versions of @angular-devkit/core
+    Depends on vulnerable versions of @angular-devkit/schematics
+    Depends on vulnerable versions of @angular-devkit/schematics-cli
+    Depends on vulnerable versions of @nestjs/schematics
+    Depends on vulnerable versions of glob
+    Depends on vulnerable versions of inquirer
+    Depends on vulnerable versions of webpack
+    node_modules/@nestjs/cli
+    @nestjs/schematics  8.0.0 - 11.0.9
+    Depends on vulnerable versions of @angular-devkit/core
+    Depends on vulnerable versions of @angular-devkit/schematics
+    node_modules/@nestjs/schematics
+
+file-type  13.0.0 - 21.3.1
+Severity: moderate
+file-type affected by infinite loop in ASF parser on malformed input with zero-size sub-header - https://github.com/advisories/GHSA-5v7r-6r5c-r473
+file-type: ZIP Decompression Bomb DoS via [Content_Types].xml entry - https://github.com/advisories/GHSA-j47w-4g3g-c36v
+fix available via `npm audit fix`
+node_modules/file-type
+  @nestjs/common  10.4.16 - 10.4.22 || 11.0.16 - 11.1.16 || >=12.0.0-alpha.0
+  Depends on vulnerable versions of file-type
+  node_modules/@nestjs/common
+
+glob  10.2.0 - 10.4.5
+Severity: high
+glob CLI: Command injection via -c/--cmd executes matches with shell:true - https://github.com/advisories/GHSA-5j98-mcp5-4vw2
+fix available via `npm audit fix`
+node_modules/glob
+
+js-yaml  4.0.0 - 4.1.0
+Severity: moderate
+js-yaml has prototype pollution in merge (<<) - https://github.com/advisories/GHSA-mh29-5h37-fv8m
+fix available via `npm audit fix --force`
+Will install @nestjs/swagger@11.4.2, which is a breaking change
+node_modules/js-yaml
+
+lodash  <=4.17.23
+Severity: high
+Lodash has Prototype Pollution Vulnerability in `_.unset` and `_.omit` functions - https://github.com/advisories/GHSA-xxjr-mmjv-4gpg
+lodash vulnerable to Code Injection via `_.template` imports key names - https://github.com/advisories/GHSA-r5fr-rjxr-66jc
+lodash vulnerable to Prototype Pollution via array path bypass in `_.unset` and `_.omit` - https://github.com/advisories/GHSA-f23m-r3pf-42rh
+fix available via `npm audit fix --force`
+Will install @nestjs/swagger@11.4.2, which is a breaking change
+node_modules/lodash
+  @nestjs/config  1.1.6 - 4.0.2
+  Depends on vulnerable versions of lodash
+  node_modules/@nestjs/config
+
+minimatch  9.0.0 - 9.0.6
+Severity: high
+minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern - https://github.com/advisories/GHSA-3ppc-4f35-3m26
+minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments - https://github.com/advisories/GHSA-7r86-cg39-jmmj
+minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions - https://github.com/advisories/GHSA-23c5-xmqv-rm74
+fix available via `npm audit fix`
+node_modules/minimatch
+  @typescript-eslint/typescript-estree  6.16.0 - 7.5.0
+  Depends on vulnerable versions of minimatch
+  node_modules/@typescript-eslint/typescript-estree
+    @typescript-eslint/parser  6.16.0 - 7.5.0
+    Depends on vulnerable versions of @typescript-eslint/typescript-estree
+    node_modules/@typescript-eslint/parser
+    @typescript-eslint/type-utils  6.16.0 - 7.5.0
+    Depends on vulnerable versions of @typescript-eslint/typescript-estree
+    Depends on vulnerable versions of @typescript-eslint/utils
+    node_modules/@typescript-eslint/type-utils
+    @typescript-eslint/utils  6.16.0 - 7.5.0
+    Depends on vulnerable versions of @typescript-eslint/typescript-estree
+    node_modules/@typescript-eslint/utils
+      @typescript-eslint/eslint-plugin  6.16.0 - 7.5.0
+      Depends on vulnerable versions of @typescript-eslint/type-utils
+      Depends on vulnerable versions of @typescript-eslint/utils
+      node_modules/@typescript-eslint/eslint-plugin
+
+multer  <=2.1.0
+Severity: high
+Multer vulnerable to Denial of Service via incomplete cleanup - https://github.com/advisories/GHSA-xf7r-hgr6-v32p
+Multer vulnerable to Denial of Service via resource exhaustion - https://github.com/advisories/GHSA-v52c-386h-88mc
+Multer Vulnerable to Denial of Service via Uncontrolled Recursion - https://github.com/advisories/GHSA-5528-5vmv-3xc2
+fix available via `npm audit fix --force`
+Will install @nestjs/platform-express@11.1.19, which is a breaking change
+node_modules/multer
+
+picomatch  4.0.0 - 4.0.3
+Severity: high
+Picomatch: Method Injection in POSIX Character Classes causes incorrect Glob Matching - https://github.com/advisories/GHSA-3v7f-55p6-f55p
+Picomatch has a ReDoS vulnerability via extglob quantifiers - https://github.com/advisories/GHSA-c2c7-rcm5-vvqj
+fix available via `npm audit fix --force`
+Will install @nestjs/schematics@11.1.0, which is a breaking change
+node_modules/picomatch
+
+tmp  <=0.2.3
+tmp allows arbitrary temporary file / directory write via symbolic link `dir` parameter - https://github.com/advisories/GHSA-52f5-9888-hmc6
+fix available via `npm audit fix`
+node_modules/tmp
+  external-editor  >=1.1.1
+  Depends on vulnerable versions of tmp
+  node_modules/external-editor
+    inquirer  3.0.0 - 8.2.6 || 9.0.0 - 9.3.7
+    Depends on vulnerable versions of external-editor
+    node_modules/@angular-devkit/schematics-cli/node_modules/inquirer
+    node_modules/inquirer
+
+webpack  5.49.0 - 5.104.0
+webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to build-time SSRF behavior - https://github.com/advisories/GHSA-8fgc-7cc6-rx7x
+webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects â†’ SSRF + cache persistence - https://github.com/advisories/GHSA-38r7-794h-5758
+fix available via `npm audit fix`
+node_modules/@nestjs/cli/node_modules/webpack
+
+30 vulnerabilities (4 low, 14 moderate, 12 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+Post stage
+[Pipeline] archiveArtifacts
+Guardando archivos
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Lint)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+>>> [4/7] Ejecutando ESLint...
+[Pipeline] bat
+
+
+C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs>npm run lint   || exit 0 
+
+> devsecops-nestjs@1.0.0 lint
+> eslint "{src,apps,libs,test}/**/*.ts" --fix
+
+
+
+C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs\src\products\products.service.spec.ts
+  56:48  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  68:48  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  78:48  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  91:48  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs\src\products\products.service.ts
+  33:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  61:20  error    eval can be harmful                       no-eval
+
+âœ– 6 problems (1 error, 5 warnings)
+
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Unit Tests)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+>>> [5/7] Ejecutando tests unitarios con cobertura...
+[Pipeline] bat
+
+
+C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs>npm run test:cov 
+
+> devsecops-nestjs@1.0.0 test:cov
+> jest --coverage
+
+
+PASS src/products/products.service.spec.ts (6.108 s)
+  ProductsService
+    âˆš should be defined (24 ms)
+    findAll
+      âˆš should return an array of products (7 ms)
+    findOne
+      âˆš should return a product by id (4 ms)
+      âˆš should throw NotFoundException when product not found (21 ms)
+    remove
+      âˆš should throw NotFoundException when product not found (5 ms)
+    evaluateDiscount - VULNERABILIDAD INTENCIONAL
+      âˆš should calculate discount using eval (4 ms)
+
+
+-------------------------|---------|----------|---------|---------|-------------------
+File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------------|---------|----------|---------|---------|-------------------
+All files                |   25.22 |    66.66 |   26.31 |   24.24 |                   
+ src                     |       0 |      100 |       0 |       0 |                   
+  app.module.ts          |       0 |      100 |       0 |       0 | 1-38              
+  health.controller.ts   |       0 |      100 |       0 |       0 | 1-10              
+  main.ts                |       0 |      100 |       0 |       0 | 1-35              
+ src/products            |   32.14 |    66.66 |   31.25 |      32 |                   
+  products.controller.ts |       0 |      100 |       0 |       0 | 1-56              
+  products.module.ts     |       0 |      100 |     100 |       0 | 1-14              
+  products.service.ts    |   66.66 |    66.66 |   55.55 |      64 | 15-16,35-48,68-71 
+ src/products/dto        |       0 |      100 |     100 |       0 |                   
+  create-product.dto.ts  |       0 |      100 |     100 |       0 | 1-29              
+  update-product.dto.ts  |       0 |      100 |     100 |       0 | 1-4               
+ src/products/schemas    |     100 |      100 |     100 |     100 |                   
+  product.schema.ts      |     100 |      100 |     100 |     100 |                   
+-------------------------|---------|----------|---------|---------|-------------------
+Test Suites: 1 passed, 1 total
+Tests:       6 passed, 6 total
+Snapshots:   0 total
+Time:        15.037 s
+Ran all test suites.
+Post stage
+[Pipeline] publishHTML
+[htmlpublisher] Archiving HTML reports...
+[htmlpublisher] Archiving at BUILD level C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs\coverage\lcov-report to Coverage_20Report
+[htmlpublisher] Copying recursive using current thread
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SAST - SonarQube)
+[Pipeline] tool
+
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+>>> [6/7] Ejecutando analisis estatico SonarQube...
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: LocalSonar
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs>"C:\sonar-scanner\bin\sonar-scanner.bat" "-Dsonar.projectKey=DevSecOps-NestJS-API" "-Dsonar.sources=src" "-Dsonar.login=******" 
+09:39:52.041 INFO  Scanner configuration file: C:\sonar-scanner\bin\..\conf\sonar-scanner.properties
+09:39:52.043 INFO  Project root configuration file: C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs\sonar-project.properties
+09:39:52.056 INFO  SonarScanner CLI 6.2.1.4610
+09:39:52.056 INFO  Java 17.0.12 Eclipse Adoptium (64-bit)
+09:39:52.058 INFO  Windows 11 10.0 amd64
+09:39:52.074 INFO  User cache: C:\Windows\system32\config\systemprofile\.sonar\cache
+
+09:39:52.698 INFO  Communicating with SonarQube Server 9.9.8.100196
+09:39:53.147 INFO  Load global settings
+09:39:53.235 INFO  Load global settings (done) | time=90ms
+09:39:53.235 INFO  Server id: 74C15348-AZ4I3RM-4ugq1wPFiONc
+09:39:53.242 INFO  User cache: C:\Windows\system32\config\systemprofile\.sonar\cache
+09:39:53.244 INFO  Load/download plugins
+09:39:53.244 INFO  Load plugins index
+09:39:53.288 INFO  Load plugins index (done) | time=44ms
+09:39:53.343 INFO  Load/download plugins (done) | time=99ms
+
+09:39:53.810 INFO  Process project properties
+09:39:53.820 INFO  Process project properties (done) | time=10ms
+09:39:53.823 INFO  Execute project builders
+09:39:53.825 INFO  Execute project builders (done) | time=2ms
+09:39:53.833 INFO  Project key: DevSecOps-NestJS-API
+09:39:53.835 INFO  Base dir: C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs
+09:39:53.835 INFO  Working dir: C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs\.scannerwork
+09:39:53.841 INFO  Load project settings for component key: 'DevSecOps-NestJS-API'
+09:39:53.898 INFO  Load project settings for component key: 'DevSecOps-NestJS-API' (done) | time=58ms
+09:39:54.021 INFO  Auto-configuring with CI 'Jenkins'
+09:39:54.025 INFO  Load quality profiles
+09:39:54.093 INFO  Load quality profiles (done) | time=68ms
+09:39:54.096 INFO  Load active rules
+
+09:39:55.613 INFO  Load active rules (done) | time=1517ms
+09:39:55.616 INFO  Load analysis cache
+09:39:55.638 INFO  Load analysis cache (7.8 kB) | time=22ms
+09:39:55.697 INFO  Load project repositories
+09:39:55.725 INFO  Load project repositories (done) | time=28ms
+09:39:55.766 INFO  Indexing files...
+09:39:55.766 INFO  Project configuration:
+09:39:55.766 INFO    Excluded sources: node_modules/**, dist/**, coverage/**, **/*.spec.ts, **/*.e2e-spec.ts, **/*.spec.ts, **/*.e2e-spec.ts
+09:39:55.767 INFO    Included tests: **/*.spec.ts, **/*.e2e-spec.ts
+09:39:56.135 INFO  11 files indexed
+09:39:56.137 INFO  2 files ignored because of inclusion/exclusion patterns
+09:39:56.137 INFO  0 files ignored because of scm ignore settings
+09:39:56.137 INFO  Quality profile for ts: Sonar way
+09:39:56.137 INFO  ------------- Run sensors on module DevSecOps NestJS API
+09:39:56.263 INFO  Load metrics repository
+09:39:56.302 INFO  Load metrics repository (done) | time=39ms
+
+09:39:58.404 INFO  Sensor JaCoCo XML Report Importer [jacoco]
+09:39:58.406 INFO  'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+09:39:58.408 INFO  No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+09:39:58.408 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=4ms
+09:39:58.408 INFO  Sensor TypeScript analysis [javascript]
+
+09:40:16.885 WARN  Node.js version 20 is not recommended, you might experience issues. Please use a recommended version of Node.js [16, 18]
+09:40:17.058 INFO  Found 1 tsconfig.json file(s): [C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs\tsconfig.json]
+09:40:17.059 INFO  Creating TypeScript program
+09:40:17.059 INFO  TypeScript configuration file C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs\tsconfig.json
+09:40:17.063 INFO  11 source files to be analyzed
+
+09:40:20.341 INFO  Creating TypeScript program (done) | time=3282ms
+09:40:20.436 INFO  Starting analysis with current program
+
+09:40:23.379 INFO  Analyzed 11 file(s) with current program
+09:40:23.390 INFO  11/11 source files have been analyzed
+09:40:23.390 INFO  Hit the cache for 0 out of 11
+09:40:23.392 INFO  Miss the cache for 11 out of 11: ANALYSIS_MODE_INELIGIBLE [11/11]
+09:40:23.392 INFO  Sensor TypeScript analysis [javascript] (done) | time=24984ms
+09:40:23.392 INFO  Sensor CSS Rules [javascript]
+09:40:23.393 INFO  No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+09:40:23.393 INFO  Sensor CSS Rules [javascript] (done) | time=1ms
+09:40:23.393 INFO  Sensor JavaScript/TypeScript Coverage [javascript]
+09:40:23.393 INFO  Merging coverage reports from sonar.javascript.lcov.reportPaths and sonar.typescript.lcov.reportPaths.
+09:40:23.393 INFO  Analysing [C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs\coverage\lcov.info]
+09:40:23.411 INFO  Sensor JavaScript/TypeScript Coverage [javascript] (done) | time=17ms
+09:40:23.411 INFO  Sensor C# Project Type Information [csharp]
+09:40:23.411 INFO  Sensor C# Project Type Information [csharp] (done) | time=0ms
+09:40:23.411 INFO  Sensor C# Analysis Log [csharp]
+09:40:23.427 INFO  Sensor C# Analysis Log [csharp] (done) | time=16ms
+09:40:23.427 INFO  Sensor C# Properties [csharp]
+09:40:23.427 INFO  Sensor C# Properties [csharp] (done) | time=0ms
+09:40:23.427 INFO  Sensor HTML [web]
+09:40:23.430 INFO  Sensor HTML [web] (done) | time=3ms
+09:40:23.430 INFO  Sensor TextAndSecretsSensor [text]
+09:40:23.441 INFO  11 source files to be analyzed
+09:40:23.472 INFO  11/11 source files have been analyzed
+09:40:23.472 INFO  Sensor TextAndSecretsSensor [text] (done) | time=42ms
+09:40:23.472 INFO  Sensor VB.NET Project Type Information [vbnet]
+09:40:23.473 INFO  Sensor VB.NET Project Type Information [vbnet] (done) | time=1ms
+09:40:23.474 INFO  Sensor VB.NET Analysis Log [vbnet]
+09:40:23.494 INFO  Sensor VB.NET Analysis Log [vbnet] (done) | time=20ms
+09:40:23.496 INFO  Sensor VB.NET Properties [vbnet]
+09:40:23.496 INFO  Sensor VB.NET Properties [vbnet] (done) | time=0ms
+09:40:23.496 INFO  Sensor IaC Docker Sensor [iac]
+09:40:23.500 INFO  0 source files to be analyzed
+09:40:23.577 INFO  0/0 source files have been analyzed
+09:40:23.577 INFO  Sensor IaC Docker Sensor [iac] (done) | time=81ms
+09:40:23.583 INFO  ------------- Run sensors on project
+09:40:23.656 INFO  Sensor Analysis Warnings import [csharp]
+09:40:23.657 INFO  Sensor Analysis Warnings import [csharp] (done) | time=1ms
+09:40:23.658 INFO  Sensor Zero Coverage Sensor
+09:40:23.659 INFO  Sensor Zero Coverage Sensor (done) | time=1ms
+09:40:23.673 INFO  SCM Publisher SCM provider for this project is: git
+09:40:23.675 INFO  SCM Publisher 3 source files to be analyzed
+09:40:24.006 INFO  SCM Publisher 0/3 source files have been analyzed (done) | time=331ms
+09:40:24.007 WARN  Missing blame information for the following files:
+09:40:24.007 WARN    * test/app.e2e-spec.ts
+09:40:24.007 WARN    * test/products.e2e-spec.ts
+09:40:24.007 WARN    * src/products/products.service.ts
+09:40:24.007 WARN  This may lead to missing/broken features in SonarQube
+09:40:24.014 INFO  CPD Executor 3 files had no CPD blocks
+09:40:24.014 INFO  CPD Executor Calculating CPD for 6 files
+09:40:24.027 INFO  CPD Executor CPD calculation finished (done) | time=12ms
+09:40:24.143 INFO  Analysis report generated in 97ms, dir size=156.0 kB
+09:40:24.247 INFO  Analysis report compressed in 102ms, zip size=44.8 kB
+09:40:24.287 INFO  Analysis report uploaded in 40ms
+09:40:24.288 INFO  ANALYSIS SUCCESSFUL, you can find the results at: http://localhost:9000/dashboard?id=DevSecOps-NestJS-API
+09:40:24.289 INFO  Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+09:40:24.289 INFO  More about the report processing at http://localhost:9000/api/ce/task?id=AZ4NLrGdXN2_d_9t4Pel
+
+09:40:29.631 INFO  Analysis total time: 36.203 s
+09:40:29.633 INFO  EXECUTION SUCCESS
+09:40:29.634 INFO  Total time: 37.624s
+[Pipeline] }
+
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Quality Gate)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+>>> Esperando Quality Gate de SonarQube...
+[Pipeline] script
+[Pipeline] {
+[Pipeline] waitForQualityGate
+Checking status of SonarQube task 'AZ4NLrGdXN2_d_9t4Pel' on server 'LocalSonar'
+SonarQube task 'AZ4NLrGdXN2_d_9t4Pel' status is 'SUCCESS'
+SonarQube task 'AZ4NLrGdXN2_d_9t4Pel' completed. Quality gate is 'ERROR'
+[Pipeline] echo
+Quality Gate fallo: ERROR - marcando build como UNSTABLE
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+>>> [7/8] Construyendo imagen Docker devsecops-nestjs:4...
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs>docker build -t devsecops-nestjs:4 . 
+
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 552B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+
+#2 DONE 1.5s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 240B done
+#3 DONE 0.0s
+
+#4 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#4 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 22.39kB 0.0s done
+#5 DONE 0.0s
+
+#6 [builder 2/6] WORKDIR /app
+#6 CACHED
+
+#7 [builder 3/6] COPY package*.json ./
+#7 CACHED
+
+#8 [builder 4/6] RUN npm ci
+#8 CACHED
+
+#9 [builder 5/6] COPY . .
+#9 DONE 0.1s
+
+#10 [builder 6/6] RUN npm run build
+#10 0.561 
+#10 0.561 > devsecops-nestjs@1.0.0 build
+#10 0.561 > nest build
+#10 0.561 
+
+#10 DONE 5.7s
+
+
+#11 [production 4/5] RUN npm ci --only=production && npm cache clean --force
+#11 CACHED
+
+#12 [production 5/5] COPY --from=builder /app/dist ./dist
+#12 CACHED
+
+
+#13 exporting to image
+#13 exporting layers done
+#13 exporting manifest sha256:be9df14fa78b274caa6b008b363492a6a915109e5e3f2d2f4d94bdec3440fa17 done
+#13 exporting config sha256:b849a5c850393483d78540e180325061b7612efd323db0bb024ddf053dfbf3e4 done
+#13 exporting attestation manifest sha256:63a198f13876a6c486161381d259fa10c9129d712af438741b11eb823abde0e2 0.0s done
+#13 exporting manifest list sha256:e419fc66d2c92e3ff68cfcfb1f8c0d9572041e5c61c431b47aea6da27f8f388d 0.0s done
+#13 naming to docker.io/library/devsecops-nestjs:4 done
+#13 unpacking to docker.io/library/devsecops-nestjs:4
+
+#13 unpacking to docker.io/library/devsecops-nestjs:4 2.9s done
+#13 DONE 3.0s
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (DAST - OWASP ZAP)
+[Pipeline] tool
+
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+>>> [8/8] Ejecutando escaneo dinamico OWASP ZAP...
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs>docker-compose -f docker-compose.yml up -d 
+time="2026-05-09T09:40:50-05:00" level=warning msg="C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\devsecops-nestjs\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+time="2026-05-09T09:40:51-05:00" level=warning msg="Found orphan containers ([sonarqube sonar-postgres]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up."
+ Container devsecops-mongo  Running
+ Container devsecops-api  Running
+ Container devsecops-mongo  Waiting
+
+ Container devsecops-mongo  Healthy
+[Pipeline] bat
+API lista.
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs>docker run --rm --network host -v "C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs:/zap/wrk/:rw" ghcr.io/zaproxy/zaproxy:stable zap-api-scan.py -t http://localhost:3000/api-json -f openapi -r /zap/wrk/zap-report.html -J /zap/wrk/zap-report.json -I -l WARN   || exit 0 
+
+2026-05-09 14:41:08,324 Number of Imported URLs: 6
+
+Total of 31 URLs
+WARN-NEW: A Server Error response code was returned by the server [100000] x 7 
+	http://localhost:3000/products/id (500 Internal Server Error)
+	http://localhost:3000/products/id (500 Internal Server Error)
+	http://localhost:3000/products/id (500 Internal Server Error)
+	http://localhost:3000/products/7747166301475806412 (500 Internal Server Error)
+	http://localhost:3000/products/id/ (500 Internal Server Error)
+WARN-NEW: Information Disclosure - Debug Error Messages [10023] x 3 
+	http://localhost:3000/products/id (500 Internal Server Error)
+	http://localhost:3000/products/id (500 Internal Server Error)
+	http://localhost:3000/products/id (500 Internal Server Error)
+WARN-NEW: Application Error Disclosure [90022] x 3 
+	http://localhost:3000/products/id (500 Internal Server Error)
+	http://localhost:3000/products/id (500 Internal Server Error)
+	http://localhost:3000/products/id (500 Internal Server Error)
+FAIL-NEW: 0	FAIL-INPROG: 0	WARN-NEW: 3	WARN-INPROG: 0	INFO: 0	IGNORE: 0	PASS: 117
+Post stage
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs>docker-compose -f docker-compose.yml down   || exit 0 
+time="2026-05-09T09:41:17-05:00" level=warning msg="C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\devsecops-nestjs\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Container devsecops-api  Stopping
+
+ Container devsecops-api  Stopped
+ Container devsecops-api  Removing
+
+ Container devsecops-api  Removed
+ Container devsecops-mongo  Stopping
+ Container devsecops-mongo  Stopped
+ Container devsecops-mongo  Removing
+ Container devsecops-mongo  Removed
+ Network devsecops-nestjs_devsecops-net  Removing
+ Network devsecops-nestjs_devsecops-net  Removed
+[Pipeline] publishHTML
+[htmlpublisher] Archiving HTML reports...
+[htmlpublisher] Archiving at BUILD level C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs to OWASP_20ZAP_20Report
+[htmlpublisher] Copying recursive using current thread
+
+[Pipeline] archiveArtifacts
+Guardando archivos
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+>>> Limpiando imagen Docker...
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\devsecops-nestjs>docker rmi devsecops-nestjs:4   || exit 0 
+Untagged: devsecops-nestjs:4
+Deleted: sha256:e419fc66d2c92e3ff68cfcfb1f8c0d9572041e5c61c431b47aea6da27f8f388d
+[Pipeline] echo
+>>> Pipeline finalizado con estado: UNSTABLE
+[Pipeline] echo
+Pipeline finalizado con advertencias (UNSTABLE).
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: UNSTABLE
