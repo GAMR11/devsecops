@@ -18,8 +18,6 @@ zap-report.md
 zap-report.json
 npm-audit-report.json
 
-# Evidencias (capturas de pantalla, logs)
-evidencias/
 
 # IDE
 .vscode/
