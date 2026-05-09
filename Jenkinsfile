@@ -65,11 +65,33 @@ pipeline {
         }
 
         // ─────────────────────────────────────────────────────────
-        // 5. SAST – SONARQUBE
+        // 5. UNIT TESTS + COBERTURA  (antes del SAST para generar lcov.info)
+        // ─────────────────────────────────────────────────────────
+        stage('Unit Tests') {
+            steps {
+                echo '>>> [5/7] Ejecutando tests unitarios con cobertura...'
+                bat 'npm run test:cov'
+            }
+            post {
+                always {
+                    publishHTML(target: [
+                        allowMissing         : true,
+                        alwaysLinkToLastBuild: true,
+                        keepAll              : true,
+                        reportDir            : 'coverage/lcov-report',
+                        reportFiles          : 'index.html',
+                        reportName           : 'Coverage Report'
+                    ])
+                }
+            }
+        }
+
+        // ─────────────────────────────────────────────────────────
+        // 6. SAST – SONARQUBE (lee coverage/lcov.info generado arriba)
         // ─────────────────────────────────────────────────────────
         stage('SAST - SonarQube') {
             steps {
-                echo '>>> [5/7] Ejecutando analisis estatico SonarQube...'
+                echo '>>> [6/7] Ejecutando analisis estatico SonarQube...'
                 withSonarQubeEnv("${SONAR_SERVER}") {
                     bat '"C:\\sonar-scanner\\bin\\sonar-scanner.bat" "-Dsonar.projectKey=DevSecOps-NestJS-API" "-Dsonar.sources=src" "-Dsonar.login=%SONAR_AUTH_TOKEN%"'
                 }
@@ -85,28 +107,6 @@ pipeline {
                         echo "Quality Gate fallo: ${qg.status} - marcando build como UNSTABLE"
                         currentBuild.result = 'UNSTABLE'
                     }
-                }
-            }
-        }
-
-        // ─────────────────────────────────────────────────────────
-        // 6. UNIT TESTS + COBERTURA
-        // ─────────────────────────────────────────────────────────
-        stage('Unit Tests') {
-            steps {
-                echo '>>> [6/7] Ejecutando tests unitarios con cobertura...'
-                bat 'npm run test:cov'
-            }
-            post {
-                always {
-                    publishHTML(target: [
-                        allowMissing         : true,
-                        alwaysLinkToLastBuild: true,
-                        keepAll              : true,
-                        reportDir            : 'coverage/lcov-report',
-                        reportFiles          : 'index.html',
-                        reportName           : 'Coverage Report'
-                    ])
                 }
             }
         }
