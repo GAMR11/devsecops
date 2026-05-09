@@ -116,8 +116,49 @@ pipeline {
         // ─────────────────────────────────────────────────────────
         stage('Build Docker') {
             steps {
-                echo ">>> [7/7] Construyendo imagen Docker ${IMAGE_NAME}:${BUILD_NUMBER}..."
+                echo ">>> [7/8] Construyendo imagen Docker ${IMAGE_NAME}:${BUILD_NUMBER}..."
                 bat "docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} ."
+            }
+        }
+
+        // ─────────────────────────────────────────────────────────
+        // 8. DAST – OWASP ZAP
+        // ─────────────────────────────────────────────────────────
+        stage('DAST - OWASP ZAP') {
+            steps {
+                echo '>>> [8/8] Ejecutando escaneo dinamico OWASP ZAP...'
+                bat "docker-compose -f %COMPOSE_FILE_APP% up -d"
+                bat """
+                    @echo off
+                    set /a count=0
+                    :wait
+                    curl -sf http://localhost:3000/health >nul 2>&1 && goto ready
+                    set /a count+=1
+                    if %count% geq 20 goto timeout
+                    timeout /t 3 /nobreak >nul
+                    goto wait
+                    :ready
+                    echo API lista.
+                    goto done
+                    :timeout
+                    echo Timeout esperando la API.
+                    :done
+                """
+                bat """docker run --rm --network host -v "%CD%:/zap/wrk/:rw" ghcr.io/zaproxy/zaproxy:stable zap-api-scan.py -t http://localhost:3000/api-json -f openapi -r /zap/wrk/zap-report.html -J /zap/wrk/zap-report.json -I -l WARN || exit 0"""
+            }
+            post {
+                always {
+                    bat "docker-compose -f %COMPOSE_FILE_APP% down || exit 0"
+                    publishHTML(target: [
+                        allowMissing         : true,
+                        alwaysLinkToLastBuild: true,
+                        keepAll              : true,
+                        reportDir            : '.',
+                        reportFiles          : 'zap-report.html',
+                        reportName           : 'OWASP ZAP Report'
+                    ])
+                    archiveArtifacts artifacts: 'zap-report.json', allowEmptyArchive: true
+                }
             }
         }
     }
