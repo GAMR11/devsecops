@@ -136,13 +136,13 @@ pipeline {
                     :wait
                     curl -sf http://localhost:3000/health >nul 2>&1 && goto ready
                     set /a count+=1
-                    if %count% geq 20 goto timeout
-                    timeout /t 3 /nobreak >nul
+                    if %count% geq 20 goto timedout
+                    ping -n 4 127.0.0.1 >nul
                     goto wait
                     :ready
                     echo API lista.
                     goto done
-                    :timeout
+                    :timedout
                     echo Timeout esperando la API.
                     :done
                 """
