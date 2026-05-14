@@ -127,7 +127,8 @@ pipeline {
         stage('DAST - OWASP ZAP') {
             steps {
                 echo '>>> [8/8] Ejecutando escaneo dinamico OWASP ZAP...'
-                bat "docker-compose -f %COMPOSE_FILE_APP% down || exit 0"
+                bat "docker-compose -f %COMPOSE_FILE_APP% down --remove-orphans || exit 0"
+                bat "docker rm -f devsecops-api devsecops-mongo || exit 0"
                 bat "docker-compose -f %COMPOSE_FILE_APP% up -d"
                 bat """
                     @echo off
