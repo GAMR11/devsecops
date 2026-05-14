@@ -132,18 +132,21 @@ pipeline {
                 bat "docker-compose -f %COMPOSE_FILE_APP% up -d"
                 bat """
                     @echo off
+                    echo Esperando que la API este lista...
                     set /a count=0
                     :wait
-                    curl -sf http://localhost:3000/health >nul 2>&1 && goto ready
                     set /a count+=1
-                    if %count% geq 20 goto timedout
-                    ping -n 4 127.0.0.1 >nul
+                    echo Intento %count% de 30...
+                    curl.exe -s -o nul -w "%%{http_code}" http://127.0.0.1:3000/health 2>nul | findstr /r "200 201" >nul 2>&1
+                    if not errorlevel 1 goto ready
+                    if %count% geq 30 goto timedout
+                    ping -n 6 127.0.0.1 >nul
                     goto wait
                     :ready
-                    echo API lista.
+                    echo API lista en intento %count%.
                     goto done
                     :timedout
-                    echo Timeout esperando la API.
+                    echo API no respondio despues de 30 intentos, continuando de todas formas...
                     :done
                 """
                 bat """docker run --rm --network host -v "%CD%:/zap/wrk/:rw" ghcr.io/zaproxy/zaproxy:stable zap-api-scan.py -t http://localhost:3000/api-json -f openapi -r /zap/wrk/zap-report.html -J /zap/wrk/zap-report.json -I -l WARN || exit 0"""
